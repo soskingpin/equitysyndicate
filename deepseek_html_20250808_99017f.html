@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equity Syndicate | Forex Trading Guru</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #0ea5e9;
+            --accent2: #2563eb;
+            --accent3: #1d4ed8;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --success: #22c55e;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0e15 0%, #1a1d2b 100%);
+            color: var(--text);
+            font-family: 'Raleway', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 20%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #0ea5e9, #2563eb, #1d4ed8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1s ease;
+            text-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeIn 1.5s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Trading Stats */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 40px 0;
+            animation: fadeInUp 1s ease;
+        }
+
+        .stat-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            width: 220px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(30, 41, 59, 0.85);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 35px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: 10px;
+        }
+
+        .section-title i {
+            font-size: 1.8rem;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: rgba(30, 33, 48, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+            border-color: rgba(37, 99, 235, 0.5);
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .contact-info {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        /* Packages */
+        .packages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: rgba(30, 33, 48, 0.8);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .package-card.vip {
+            border-top: 5px solid #0ea5e9;
+        }
+
+        .package-card.mentorship {
+            border-top: 5px solid #2563eb;
+        }
+
+        .package-card.account {
+            border-top: 5px solid #1d4ed8;
+        }
+
+        .package-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .package-title i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .package-price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 15px 0 25px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .package-features {
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .package-features li i {
+            color: var(--accent);
+            min-width: 24px;
+        }
+
+        .highlight {
+            background: rgba(37, 99, 235, 0.15);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 5px 0 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--text);
+            box-shadow: none;
+            margin-top: 15px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-success {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        /* Social Media */
+        .social-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .social-card {
+            background: rgba(30, 33, 48, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .social-icon.tiktok {
+            color: #69c9d0;
+        }
+
+        .social-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .social-handle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            position: relative;
+            animation: scaleIn 0.4s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .payment-instructions {
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-instructions p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-instructions p i {
+            color: var(--accent);
+            min-width: 24px;
+        }
+
+        .payment-account {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            background: rgba(37, 99, 235, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .ecocash-btn {
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .ecocash-btn:hover {
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from { 
+                opacity: 0; 
+                transform: scale(0.9);
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Chart Animation */
+        .chart-container {
+            height: 200px;
+            width: 100%;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .chart-line {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80%;
+            background: linear-gradient(to top, rgba(14, 165, 233, 0.3), transparent);
+            clip-path: polygon(0% 100%, 5% 80%, 10% 85%, 15% 70%, 20% 75%, 25% 60%, 30% 65%, 35% 50%, 40% 55%, 45% 40%, 50% 45%, 55% 30%, 60% 35%, 65% 20%, 70% 25%, 75% 10%, 80% 15%, 85% 0%, 90% 5%, 95% 20%, 100% 100%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .chart-point {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-info {
+                font-size: 1.4rem;
+            }
+            
+            .package-price {
+                font-size: 2.2rem;
+            }
+            
+            .stat-card {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1 class="logo">Equity Syndicate</h1>
+        <p class="tagline">Professional Forex Trading Signals & Investment Solutions</p>
+        
+        <!-- Trading Stats -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value">89%</div>
+                <div class="stat-label">Win Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1:3</div>
+                <div class="stat-label">Risk/Reward</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">Support</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+        
+        <!-- Chart Animation -->
+        <div class="chart-container">
+            <div class="chart-line"></div>
+            <div class="chart-point" style="left: 5%; top: 20%"></div>
+            <div class="chart-point" style="left: 25%; top: 40%"></div>
+            <div class="chart-point" style="left: 45%; top: 10%"></div>
+            <div class="chart-point" style="left: 65%; top: 30%"></div>
+            <div class="chart-point" style="left: 85%; top: 25%"></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Contact Section -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-phone-alt"></i> Contact Details</h2>
+            <div class="contact-container">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="contact-info">+263 (771 946 251)</h3>
+                    <a href="https://wa.me/263771946251" class="btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-gem"></i> Premium Packages</h2>
+            <div class="packages-container">
+                <!-- VIP Package 1 -->
+                <div class="package-card vip">
+                    <h3 class="package-title"><i class="fas fa-crown"></i> VIP Package</h3>
+                    <div class="package-price">$45 monthly</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Daily trading signals</li>
+                        <li><i class="fas fa-check"></i> Market analysis reports</li>
+                        <li><i class="fas fa-check"></i> 24/7 priority support</li>
+                        <li><i class="fas fa-check"></i> Risk management guidance</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('VIP Monthly', 45)">
+                        Subscribe Now
+                    </button>
+                </div>
+                
+                <!-- VIP Package 2 -->
+                <div class="package-card vip">
+                    <h3 class="package-title"><i class="fas fa-crown"></i> VIP Package</h3>
+                    <div class="package-price">$20 bi-weekly</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> All monthly VIP benefits</li>
+                        <li><i class="fas fa-check"></i> Flexible payment option</li>
+                        <li><i class="fas fa-check"></i> Cancel anytime</li>
+                        <li><i class="fas fa-check"></i> Ideal for short-term goals</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('VIP Bi-weekly', 20)">
+                        Subscribe Now
+                    </button>
+                </div>
+                
+                <!-- Mentorship -->
+                <div class="package-card mentorship">
+                    <h3 class="package-title"><i class="fas fa-graduation-cap"></i> Mentorship</h3>
+                    <div class="package-price">$400 Full Course</div>
+                    <div class="highlight">Payable in installments</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Comprehensive trading education</li>
+                        <li><i class="fas fa-check"></i> Personalized 1-on-1 sessions</li>
+                        <li><i class="fas fa-check"></i> Lifetime access to materials</li>
+                        <li><i class="fas fa-check"></i> Advanced strategy development</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Mentorship', 400)">
+                        Enroll Now
+                    </button>
+                </div>
+                
+                <!-- Account Management -->
+                <div class="package-card account">
+                    <h3 class="package-title"><i class="fas fa-chart-line"></i> Account Management</h3>
+                    <div class="package-price">Minimum $100</div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Professional portfolio management</li>
+                        <li><i class="fas fa-check"></i> Regular performance reports</li>
+                        <li><i class="fas fa-check"></i> Customized investment strategy</li>
+                        <li><i class="fas fa-check"></i> Secure and transparent process</li>
+                    </ul>
+                    <button class="btn" onclick="openModal('Account Management', 100)">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-hashtag"></i> Connect With Us</h2>
+            <div class="social-container">
+                <div class="social-card">
+                    <div class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3 class="social-name">Instagram</h3>
+                    <p class="social-handle">@uncensored_fx</p>
+                    <a href="https://instagram.com/uncensored_fx" class="btn" target="_blank">
+                        <i class="fab fa-instagram"></i> Follow on Instagram
+                    </a>
+                </div>
+                
+                <div class="social-card">
+                    <div class="social-icon tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3 class="social-name">TikTok</h3>
+                    <p class="social-handle">@uncensored_scalper</p>
+                    <a href="https://tiktok.com/@uncensored_scalper" class="btn" target="_blank">
+                        <i class="fab fa-tiktok"></i> Follow on TikTok
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="disclaimer">
+            <p>Equity Syndicate provides financial education and trading signals. We do not provide financial advice. Trading involves substantial risk of loss and is not suitable for every investor.</p>
+            <p>The value of investments may go down as well as up, and you may receive back less than you invested. Past performance is not indicative of future results.</p>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Equity Syndicate. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title" id="modalPackageTitle">VIP Package</h2>
+            <p class="modal-subtitle">Complete your purchase</p>
+            
+            <div class="payment-instructions">
+                <p><i class="fas fa-info-circle"></i> To complete your purchase:</p>
+                <p><i class="fas fa-arrow-right"></i> Choose your preferred payment method below</p>
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="btn" onclick="showDirectPayment()">
+                    <i class="fas fa-money-bill-wave"></i> Direct Payment
+                </button>
+                <a id="whatsappLink" href="https://wa.me/263771946251" class="btn btn-success" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Payment Proof
+                </a>
+                <button class="btn btn-outline" onclick="closeModal()">
+                    <i class="fas fa-arrow-left"></i> Back to Packages
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Direct Payment Modal -->
+    <div class="modal" id="directPaymentModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeDirectPaymentModal()">&times;</span>
+            <h2 class="modal-title">Direct Payment</h2>
+            <p class="modal-subtitle">Complete payment via Ecocash</p>
+            
+            <div class="payment-instructions">
+                <p><i class="fas fa-info-circle"></i> To complete payment via Ecocash:</p>
+                <p><i class="fas fa-arrow-right"></i> Dial the following USSD code:</p>
+                
+                <div class="payment-account" id="ecocashCode">*153*1*1*0771946251*45#</div>
+                
+                <p><i class="fas fa-exclamation-circle"></i> After dialing, enter your PIN to complete payment</p>
+            </div>
+            
+            <div class="modal-buttons">
+                <a id="dialLink" href="tel:*153*1*1*0771946251*45#" class="btn ecocash-btn">
+                    <i class="fas fa-phone"></i> Dial Ecocash Code Now
+                </a>
+                <button class="btn btn-outline" onclick="closeDirectPaymentModal()">
+                    <i class="fas fa-arrow-left"></i> Back to Payment Options
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Current package info
+        let currentPackage = {
+            name: '',
+            amount: 0
+        };
+
+        // Open payment modal
+        function openModal(packageName, packageAmount) {
+            currentPackage = {
+                name: packageName,
+                amount: packageAmount
+            };
+            
+            // Update modal title
+            document.getElementById('modalPackageTitle').textContent = packageName;
+            
+            // Update WhatsApp link with pre-filled message
+            const message = `Hi Equity Syndicate admin, I have purchased ${packageName}. Here is my payment proof:`;
+            document.getElementById('whatsappLink').href = `https://wa.me/263771946251?text=${encodeURIComponent(message)}`;
+            
+            // Show modal
+            document.getElementById('paymentModal').classList.add('active');
+        }
+        
+        // Close payment modal
+        function closeModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+        
+        // Show direct payment modal
+        function showDirectPayment() {
+            // Close the first modal
+            closeModal();
+            
+            // Update Ecocash code with current package amount
+            const ecocashCode = `*153*1*1*0771946251*${currentPackage.amount}#`;
+            document.getElementById('ecocashCode').textContent = ecocashCode;
+            
+            // Update dial link
+            document.getElementById('dialLink').href = `tel:${ecocashCode}`;
+            
+            // Show direct payment modal
+            document.getElementById('directPaymentModal').classList.add('active');
+        }
+        
+        // Close direct payment modal
+        function closeDirectPaymentModal() {
+            document.getElementById('directPaymentModal').classList.remove('active');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const paymentModal = document.getElementById('paymentModal');
+            const directModal = document.getElementById('directPaymentModal');
+            
+            if (event.target === paymentModal) {
+                closeModal();
+            }
+            if (event.target === directModal) {
+                closeDirectPaymentModal();
+            }
+        }
+        
+        // Add animations to elements when they come into view
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.85) {
+                    section.style.animation = "fadeInUp 0.8s ease forwards";
+                }
+            });
+        });
+        
+        // Initialize animations
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = "0";
+        });
+    </script>
+</body>
+</html>
