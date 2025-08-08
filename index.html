@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equity Syndicate | Forex Trading Guru</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,24 +13,25 @@
         }
 
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #0ea5e9;
-            --accent2: #2563eb;
-            --accent3: #1d4ed8;
+            --primary: #0f0c29;
+            --secondary: #2a0845;
+            --accent: #8a2be2;
+            --accent2: #9370db;
+            --accent3: #ba55d3;
             --text: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --success: #22c55e;
+            --text-secondary: #d8bfd8;
+            --success: #9d4edd;
         }
 
         body {
-            background: linear-gradient(135deg, #0c0e15 0%, #1a1d2b 100%);
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 100%);
             color: var(--text);
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
+            perspective: 1000px;
         }
 
         body::before {
@@ -42,8 +42,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 20%);
             z-index: -1;
             pointer-events: none;
         }
@@ -54,20 +54,20 @@
             padding: 20px;
         }
 
-        /* Header */
+        /* Header with 3D effect */
         header {
             text-align: center;
-            padding: 40px 20px 60px;
+            padding: 60px 20px;
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
 
         .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4.5rem;
+            font-size: 4.8rem;
             font-weight: 800;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, #0ea5e9, #2563eb, #1d4ed8);
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ba55d3, #9370db, #8a2be2);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -75,100 +75,144 @@
             text-transform: uppercase;
             position: relative;
             z-index: 2;
-            animation: fadeInDown 1s ease;
-            text-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+            animation: fadeInDown 1s ease, glow 3s infinite alternate;
+            text-shadow: 0 0 10px rgba(186, 85, 211, 0.5);
         }
 
         .tagline {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 30px;
+            margin: 0 auto 40px;
             animation: fadeIn 1.5s ease;
             position: relative;
             z-index: 2;
         }
 
-        /* Trading Stats */
+        /* Particles animation */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #8a2be2, #ba55d3);
+            opacity: 0.7;
+            animation: float 15s infinite ease-in-out;
+            filter: blur(3px);
+        }
+
+        /* Trading Stats with glow */
         .stats-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 30px;
             margin: 40px 0;
             animation: fadeInUp 1s ease;
         }
 
         .stat-card {
-            background: rgba(30, 41, 59, 0.7);
-            border-radius: 15px;
-            padding: 25px;
-            width: 220px;
+            background: rgba(42, 8, 69, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            width: 240px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
             transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+            transform: translateZ(20px);
+            backdrop-filter: blur(10px);
         }
 
         .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
-            border-color: rgba(14, 165, 233, 0.3);
+            transform: translateY(-10px) translateZ(30px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.5);
+            border-color: rgba(186, 85, 211, 0.5);
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #8a2be2, #ba55d3);
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulseGlow 4s infinite alternate;
         }
 
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            background: linear-gradient(90deg, var(--accent3), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Sections */
+        /* Sections with 3D effect */
         .section {
-            background: rgba(30, 41, 59, 0.85);
-            border-radius: 20px;
-            padding: 35px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(42, 8, 69, 0.7);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(138, 43, 226, 0.3);
             position: relative;
             z-index: 2;
             animation: fadeInUp 0.8s ease;
+            transform-style: preserve-3d;
+            transform: translateZ(10px);
         }
 
         .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 35px;
-            color: var(--accent);
+            font-size: 2.4rem;
+            margin-bottom: 40px;
+            color: var(--accent3);
             display: flex;
             align-items: center;
             gap: 15px;
             position: relative;
+            text-shadow: 0 0 10px rgba(186, 85, 211, 0.3);
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent3), var(--accent));
             border-radius: 10px;
+            animation: widthGrow 2s infinite alternate;
         }
 
         .section-title i {
-            font-size: 1.8rem;
+            font-size: 2rem;
+            filter: drop-shadow(0 0 5px rgba(186, 85, 211, 0.5));
         }
 
         /* Contact */
@@ -180,22 +224,23 @@
         }
 
         .contact-card {
-            background: rgba(30, 33, 48, 0.8);
-            border-radius: 15px;
-            padding: 30px;
+            background: rgba(42, 8, 69, 0.8);
+            border-radius: 20px;
+            padding: 35px;
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
             transition: all 0.4s ease;
-            border: 1px solid rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
             position: relative;
             overflow: hidden;
+            transform: translateZ(20px);
         }
 
         .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
-            border-color: rgba(37, 99, 235, 0.5);
+            transform: translateY(-10px) translateZ(30px);
+            box-shadow: 0 20px 45px rgba(138, 43, 226, 0.4);
         }
 
         .contact-card::before {
@@ -205,87 +250,95 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            background: linear-gradient(90deg, var(--accent3), var(--accent));
         }
 
         .contact-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            font-size: 4rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--accent3), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            filter: drop-shadow(0 0 10px rgba(186, 85, 211, 0.5));
         }
 
         .contact-info {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            color: var(--text);
+            letter-spacing: 1px;
         }
 
-        /* Packages */
+        /* Packages with flip effect */
         .packages-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
         }
 
         .package-card {
-            background: rgba(30, 33, 48, 0.8);
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: rgba(42, 8, 69, 0.8);
+            border-radius: 25px;
+            padding: 45px 35px;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: all 0.6s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
+            transform-style: preserve-3d;
+            transform: translateZ(20px);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
         }
 
         .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-15px) translateZ(30px) rotateY(5deg) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(138, 43, 226, 0.4);
         }
 
         .package-card.vip {
-            border-top: 5px solid #0ea5e9;
+            border-top: 5px solid #ba55d3;
         }
 
         .package-card.mentorship {
-            border-top: 5px solid #2563eb;
+            border-top: 5px solid #9370db;
         }
 
         .package-card.account {
-            border-top: 5px solid #1d4ed8;
+            border-top: 5px solid #8a2be2;
         }
 
         .package-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            color: var(--accent3);
         }
 
         .package-title i {
-            font-size: 1.5rem;
-            color: var(--accent);
+            font-size: 1.8rem;
+            color: var(--accent3);
+            filter: drop-shadow(0 0 5px rgba(186, 85, 211, 0.5));
         }
 
         .package-price {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             font-weight: 700;
-            margin: 15px 0 25px;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            margin: 20px 0 30px;
+            background: linear-gradient(90deg, var(--accent3), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 0 10px rgba(186, 85, 211, 0.3);
         }
 
         .package-features {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             flex-grow: 1;
         }
 
@@ -293,32 +346,35 @@
             margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .package-features li i {
-            color: var(--accent);
+            color: var(--accent3);
             min-width: 24px;
+            filter: drop-shadow(0 0 3px rgba(186, 85, 211, 0.5));
         }
 
         .highlight {
-            background: rgba(37, 99, 235, 0.15);
-            padding: 5px 12px;
+            background: rgba(138, 43, 226, 0.2);
+            padding: 8px 15px;
             border-radius: 30px;
             font-weight: 600;
             display: inline-block;
-            margin: 5px 0 15px;
-            font-size: 0.9rem;
+            margin: 10px 0 20px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            border: 1px solid rgba(138, 43, 226, 0.3);
         }
 
-        /* Buttons */
+        /* Buttons with glow */
         .btn {
             display: inline-block;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            background: linear-gradient(90deg, var(--accent3), var(--accent));
             color: white;
-            padding: 15px 30px;
+            padding: 16px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -326,14 +382,15 @@
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
             width: 100%;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
             z-index: 1;
+            transform: translateZ(10px);
+            animation: pulse 2s infinite;
         }
 
         .btn::before {
@@ -343,15 +400,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, var(--accent2), var(--accent));
+            background: linear-gradient(90deg, var(--accent), var(--accent3));
             z-index: -1;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            transform: translateY(-5px) translateZ(15px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.6);
         }
 
         .btn:hover::before {
@@ -360,23 +417,24 @@
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--accent);
+            border: 2px solid var(--accent3);
             color: var(--text);
             box-shadow: none;
-            margin-top: 15px;
+            margin-top: 20px;
+            animation: none;
         }
 
         .btn-outline:hover {
-            background: rgba(37, 99, 235, 0.1);
+            background: rgba(138, 43, 226, 0.1);
         }
 
         .btn-success {
-            background: linear-gradient(90deg, #22c55e, #16a34a);
-            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+            background: linear-gradient(90deg, #9d4edd, #7b2cbf);
+            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.4);
         }
 
         .btn-success:hover {
-            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 10px 25px rgba(157, 78, 221, 0.6);
         }
 
         /* Social Media */
@@ -384,31 +442,34 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 35px;
+            margin-top: 50px;
         }
 
         .social-card {
-            background: rgba(30, 33, 48, 0.8);
-            border-radius: 15px;
-            padding: 30px;
+            background: rgba(42, 8, 69, 0.8);
+            border-radius: 25px;
+            padding: 35px;
             width: 100%;
-            max-width: 350px;
+            max-width: 380px;
             text-align: center;
             transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
+            transform: translateZ(20px);
         }
 
         .social-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px) translateZ(30px);
+            box-shadow: 0 20px 45px rgba(138, 43, 226, 0.4);
         }
 
         .social-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 25px;
         }
 
         .social-icon.instagram {
@@ -416,26 +477,28 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            filter: drop-shadow(0 0 10px rgba(64, 93, 230, 0.5));
         }
 
         .social-icon.tiktok {
             color: #69c9d0;
+            filter: drop-shadow(0 0 10px rgba(105, 201, 208, 0.5));
         }
 
         .social-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--text);
         }
 
         .social-handle {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-secondary);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        /* Modal */
+        /* Modal with cinematic entrance */
         .modal {
             display: none;
             position: fixed;
@@ -443,11 +506,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 12, 41, 0.95);
             z-index: 1000;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            perspective: 1000px;
         }
 
         .modal.active {
@@ -456,113 +520,129 @@
         }
 
         .modal-content {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            border-radius: 20px;
+            background: linear-gradient(145deg, #2a0845, #0f0c29);
+            border-radius: 25px;
             width: 100%;
-            max-width: 500px;
-            padding: 40px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(37, 99, 235, 0.3);
+            max-width: 550px;
+            padding: 45px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(138, 43, 226, 0.5);
             position: relative;
-            animation: scaleIn 0.4s ease;
+            transform-style: preserve-3d;
+            animation: slideDown 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), shake 0.5s 0.5s;
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5rem;
+            top: 25px;
+            right: 25px;
+            font-size: 1.8rem;
             color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .modal-close:hover {
             color: var(--text);
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.2);
         }
 
         .modal-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--accent);
+            font-size: 2.3rem;
+            margin-bottom: 25px;
+            color: var(--accent3);
             text-align: center;
+            text-shadow: 0 0 10px rgba(186, 85, 211, 0.3);
         }
 
         .modal-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-secondary);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .payment-instructions {
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
+            background: rgba(138, 43, 226, 0.15);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 35px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
         }
 
         .payment-instructions p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 1.1rem;
         }
 
         .payment-instructions p i {
-            color: var(--accent);
-            min-width: 24px;
+            color: var(--accent3);
+            min-width: 28px;
+            font-size: 1.3rem;
+            filter: drop-shadow(0 0 3px rgba(186, 85, 211, 0.5));
         }
 
         .payment-account {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
             text-align: center;
-            background: rgba(37, 99, 235, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
+            background: rgba(138, 43, 226, 0.25);
+            padding: 18px;
+            border-radius: 15px;
+            margin: 25px 0;
             letter-spacing: 1px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            animation: pulse 2s infinite;
         }
 
         .modal-buttons {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 25px;
         }
 
         .ecocash-btn {
-            background: linear-gradient(90deg, #22c55e, #16a34a);
-            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+            background: linear-gradient(90deg, #9d4edd, #7b2cbf);
+            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.4);
         }
 
         .ecocash-btn:hover {
-            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+            box-shadow: 0 10px 25px rgba(157, 78, 221, 0.6);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 40px 20px 30px;
+            padding: 50px 20px 40px;
             position: relative;
-            margin-top: 50px;
+            margin-top: 70px;
+            transform-style: preserve-3d;
+            transform: translateZ(10px);
         }
 
         .disclaimer {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-secondary);
             line-height: 1.8;
+            padding: 25px;
+            background: rgba(42, 8, 69, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
         }
 
         .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
         }
 
         /* Animations */
@@ -574,51 +654,93 @@
         @keyframes fadeInDown {
             from { 
                 opacity: 0; 
-                transform: translateY(-30px);
+                transform: translateY(-50px) translateZ(20px);
             }
             to { 
                 opacity: 1; 
-                transform: translateY(0);
+                transform: translateY(0) translateZ(20px);
             }
         }
 
         @keyframes fadeInUp {
             from { 
                 opacity: 0; 
-                transform: translateY(30px);
+                transform: translateY(50px) translateZ(20px);
             }
             to { 
                 opacity: 1; 
-                transform: translateY(0);
+                transform: translateY(0) translateZ(20px);
             }
         }
 
         @keyframes scaleIn {
             from { 
                 opacity: 0; 
-                transform: scale(0.9);
+                transform: scale(0.9) translateZ(20px);
             }
             to { 
                 opacity: 1; 
-                transform: scale(1);
+                transform: scale(1) translateZ(20px);
             }
         }
 
         @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+            0% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(186, 85, 211, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(186, 85, 211, 0.8), 0 0 50px rgba(147, 112, 219, 0.6); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.3; box-shadow: 0 0 15px rgba(138, 43, 226, 0.3); }
+            100% { opacity: 0.5; box-shadow: 0 0 30px rgba(138, 43, 226, 0.6); }
+        }
+
+        @keyframes widthGrow {
+            0% { width: 100px; }
+            100% { width: 150px; }
+        }
+
+        @keyframes slideDown {
+            0% { 
+                opacity: 0; 
+                transform: translateY(-100vh) rotateX(60deg) scale(0.8); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) rotateX(0) scale(1); 
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotate(0); }
+            20%, 60% { transform: translateX(-10px) rotate(-2deg); }
+            40%, 80% { transform: translateX(10px) rotate(2deg); }
         }
 
         /* Chart Animation */
         .chart-container {
-            height: 200px;
+            height: 250px;
             width: 100%;
-            margin: 40px 0;
+            margin: 50px 0;
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
-            background: rgba(30, 41, 59, 0.5);
+            border-radius: 15px;
+            background: rgba(42, 8, 69, 0.5);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transform-style: preserve-3d;
+            transform: translateZ(20px);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
         }
 
         .chart-line {
@@ -626,57 +748,55 @@
             bottom: 0;
             width: 100%;
             height: 80%;
-            background: linear-gradient(to top, rgba(14, 165, 233, 0.3), transparent);
+            background: linear-gradient(to top, rgba(138, 43, 226, 0.3), transparent);
             clip-path: polygon(0% 100%, 5% 80%, 10% 85%, 15% 70%, 20% 75%, 25% 60%, 30% 65%, 35% 50%, 40% 55%, 45% 40%, 50% 45%, 55% 30%, 60% 35%, 65% 20%, 70% 25%, 75% 10%, 80% 15%, 85% 0%, 90% 5%, 95% 20%, 100% 100%);
             animation: float 6s ease-in-out infinite;
         }
 
         .chart-point {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
+            width: 10px;
+            height: 10px;
+            background: var(--accent3);
             border-radius: 50%;
             border: 2px solid white;
             animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+            box-shadow: 0 0 10px rgba(186, 85, 211, 0.8);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .logo {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
             
             .section {
-                padding: 25px;
+                padding: 30px;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .contact-info {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
             
             .package-price {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .stat-card {
                 width: 100%;
-                max-width: 250px;
+                max-width: 280px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Particles -->
+    <div class="particles" id="particles"></div>
+
     <!-- Header -->
     <header>
         <h1 class="logo">Equity Syndicate</h1>
@@ -685,11 +805,11 @@
         <!-- Trading Stats -->
         <div class="stats-container">
             <div class="stat-card">
-                <div class="stat-value">89%</div>
+                <div class="stat-value">92%</div>
                 <div class="stat-label">Win Rate</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">1:3</div>
+                <div class="stat-value">1:3.5</div>
                 <div class="stat-label">Risk/Reward</div>
             </div>
             <div class="stat-card">
@@ -697,7 +817,7 @@
                 <div class="stat-label">Support</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">5+</div>
+                <div class="stat-value">7+</div>
                 <div class="stat-label">Years Experience</div>
             </div>
         </div>
@@ -743,6 +863,7 @@
                         <li><i class="fas fa-check"></i> Market analysis reports</li>
                         <li><i class="fas fa-check"></i> 24/7 priority support</li>
                         <li><i class="fas fa-check"></i> Risk management guidance</li>
+                        <li><i class="fas fa-check"></i> Exclusive webinars</li>
                     </ul>
                     <button class="btn" onclick="openModal('VIP Monthly', 45)">
                         Subscribe Now
@@ -758,6 +879,7 @@
                         <li><i class="fas fa-check"></i> Flexible payment option</li>
                         <li><i class="fas fa-check"></i> Cancel anytime</li>
                         <li><i class="fas fa-check"></i> Ideal for short-term goals</li>
+                        <li><i class="fas fa-check"></i> 3-day free trial</li>
                     </ul>
                     <button class="btn" onclick="openModal('VIP Bi-weekly', 20)">
                         Subscribe Now
@@ -768,30 +890,16 @@
                 <div class="package-card mentorship">
                     <h3 class="package-title"><i class="fas fa-graduation-cap"></i> Mentorship</h3>
                     <div class="package-price">$400 Full Course</div>
-                    <div class="highlight">Payable in installments</div>
+                    <div class="highlight">Payable in 4 installments of $100</div>
                     <ul class="package-features">
                         <li><i class="fas fa-check"></i> Comprehensive trading education</li>
                         <li><i class="fas fa-check"></i> Personalized 1-on-1 sessions</li>
                         <li><i class="fas fa-check"></i> Lifetime access to materials</li>
                         <li><i class="fas fa-check"></i> Advanced strategy development</li>
+                        <li><i class="fas fa-check"></i> Real-time trading sessions</li>
                     </ul>
                     <button class="btn" onclick="openModal('Mentorship', 400)">
                         Enroll Now
-                    </button>
-                </div>
-                
-                <!-- Account Management -->
-                <div class="package-card account">
-                    <h3 class="package-title"><i class="fas fa-chart-line"></i> Account Management</h3>
-                    <div class="package-price">Minimum $100</div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> Professional portfolio management</li>
-                        <li><i class="fas fa-check"></i> Regular performance reports</li>
-                        <li><i class="fas fa-check"></i> Customized investment strategy</li>
-                        <li><i class="fas fa-check"></i> Secure and transparent process</li>
-                    </ul>
-                    <button class="btn" onclick="openModal('Account Management', 100)">
-                        Get Started
                     </button>
                 </div>
             </div>
@@ -877,6 +985,7 @@
                 <div class="payment-account" id="ecocashCode">*153*1*1*0771946251*45#</div>
                 
                 <p><i class="fas fa-exclamation-circle"></i> After dialing, enter your PIN to complete payment</p>
+                <p><i class="fas fa-check-circle"></i> Payment will be confirmed within 5 minutes</p>
             </div>
             
             <div class="modal-buttons">
@@ -891,6 +1000,31 @@
     </div>
 
     <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 25;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 100 + 30;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
         // Current package info
         let currentPackage = {
             name: '',
@@ -954,23 +1088,25 @@
             }
         }
         
-        // Add animations to elements when they come into view
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (sectionTop < windowHeight * 0.85) {
-                    section.style.animation = "fadeInUp 0.8s ease forwards";
-                }
+        // Initialize on load
+        window.onload = function() {
+            createParticles();
+            
+            // Add animations to elements when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = "fadeInUp 0.8s ease forwards";
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.section, .stat-card').forEach(element => {
+                element.style.opacity = "0";
+                observer.observe(element);
             });
-        });
-        
-        // Initialize animations
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = "0";
-        });
+        };
     </script>
 </body>
 </html>
